@@ -15,7 +15,6 @@ clear vars;
 N=11;
 max=1; age=2; class=3; pain=4; chol=5; angina=6; slopePeak=7; noVessels=8; thal=9; oldPeak=10; sex=11; 
 
-%Je préfère ne pas l'enlever mais probablement pas nécessaire
 rand('state',sum(100*clock));
 randn('state',sum(100*clock));
 
@@ -33,7 +32,7 @@ bnet=mk_bnet(dag,node_sizes,discrete_nodes);
 names={'max','age','class','pain', 'chol','agina','slopePeak','noVessels', 'thal','oldPeak','sex'};
 
 draw_graph(bnet.dag,names)
-title('Détection des risques de maladie du coeur');
+title('Dï¿½tection des risques de maladie du coeur');
 
 bnet.CPD{max}=tabular_CPD(bnet,max,'prior_type', 'dirichlet', 'dirichlet_type', 'unif');
 bnet.CPD{age}=tabular_CPD(bnet,age,'prior_type', 'dirichlet', 'dirichlet_type', 'unif');
@@ -65,11 +64,11 @@ bnet = learn_params(bnet, Donnees);
 %Affichage des tables
 CPT = cell(1,N);
 for i=1:N
-  s=struct(bnet.CPD{i});  % contre l'aspect privé de l'objet
+  s=struct(bnet.CPD{i});  % contre l'aspect privï¿½ de l'objet
   CPT{i}=s.CPT;
 end
 celldisp(CPT)
 
-%Inférence
+%Infï¿½rence
 
 
